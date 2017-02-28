@@ -1,0 +1,7 @@
+name "in"
+dependency "scriptlike" version="~>0.10.1"
+dependency "painlessjson" version="~>1.3.8"
+mainSourceFile "main.d"
+sourcePaths "../src"
+targetType "executable"
+targetPath "../bin"
