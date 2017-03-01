@@ -55,6 +55,7 @@ void setupRepo(Source source)
 void setupAuth(Source source)
 {
     std.file.write(privateKeyPath, source.private_key);
+    run(`chmod 600 ` ~ privateKeyPath);
     environment["GIT_SSH_COMMAND"] = "ssh -o StrictHostKeyChecking=no -i " ~ privateKeyPath;
 }
 
