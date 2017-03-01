@@ -2,8 +2,10 @@ import common;
 
 void main(string[] args)
 {
+    run(`ls /`);
     enforce(args.length > 1);
     auto srcDir = Path(args[1]);
+    run(`ls -R ` ~ srcDir.toString());
 
     auto jsonText = cast(string)stdin.byChunk(4096).joiner.array;
     auto config = fromJSON!Config(jsonText.parseJSON());
@@ -14,7 +16,7 @@ void main(string[] args)
 
     auto destFile = Path(repoDir) ~ config.source.file;
     auto srcFile = srcDir ~ "id";
-    enforce(srcFile.exists, "Source file (id) does not exist!");
+    enforce(srcFile.exists, "Source file (" ~ srcFile.toString() ~ ") does not exist!");
     destFile.dirName.tryMkdir();
 
     copy(srcFile, destFile);
