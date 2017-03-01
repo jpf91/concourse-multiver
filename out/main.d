@@ -2,6 +2,8 @@ import common;
 
 void main(string[] args)
 {
+    scriptlikeEcho = true;
+    
     run(`ls /`);
     enforce(args.length > 1);
     auto srcDir = Path(args[1]);
