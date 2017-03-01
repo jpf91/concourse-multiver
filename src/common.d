@@ -19,23 +19,22 @@ struct Source
     string git_email;
 }
 
+struct Params
+{
+    string id_file;
+}
+
 struct Config
 {
-    // There's a bug in painlessjson for recent compilers...
-    static Config _fromJSON(JSONValue json)
-    {
-        Config result;
-        auto obj = json.object;
-        writeln(obj);
-        if ("source" in obj)
-            result.source = fromJSON!Source(obj["source"]);
-        if ("version" in obj)
-            result.version_ = fromJSON!Version(obj["version"]);
-        return result;
-    }
-
     Source source;
-    Version version_;
+    @SerializedName("version") Version version_;
+}
+
+struct OutConfig
+{
+    Source source;
+    @SerializedName("version") Version version_;
+    Params params;
 }
 
 void setupRepo(Source source)
