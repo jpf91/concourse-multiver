@@ -69,7 +69,8 @@ string commitPushRepo(Source source)
         run(`git config --global user.name ` ~ source.git_name);
     if (!source.git_email.empty)
         run(`git config --global user.email ` ~ source.git_email);
-    
+
+    run(`git add *`);
     run(`git commit -m "Add new version for ` ~ source.file ~ `"`);
     run(`git push`);
     return runCollect(`git rev-parse HEAD`).chomp();
