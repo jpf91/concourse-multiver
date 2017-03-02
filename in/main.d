@@ -20,10 +20,10 @@ void main(string[] args)
     copy(file, destFile);
     auto id = file.readText().chomp();
     
-    writefln(`{\n
-    "version": { "gitRef": "%s" },\n
-    "metadata": [\n
-        { "name": "id", "value": "%s" }\n
-    ]\n
+    writefln(`{
+    "version": { "gitRef": "%s" },
+    "metadata": [
+        { "name": "id", "value": "%s" }
+    ]
     }`, config.version_.gitRef, id);
 }

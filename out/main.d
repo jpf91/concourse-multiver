@@ -20,10 +20,10 @@ void main(string[] args)
     auto id = srcFile.readText().chomp();
     auto gitRef = commitPushRepo(config.source);
     
-    writefln(`{\n
-    "version": { "gitRef": "%s" },\n
-    "metadata": [\n
-        { "name": "id", "value": "%s" }\n
-    ]\n
+    writefln(`{
+    "version": { "gitRef": "%s" },
+    "metadata": [
+        { "name": "id", "value": "%s" }
+    ]
     }`, gitRef, id);
 }

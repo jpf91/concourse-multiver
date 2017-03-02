@@ -8,7 +8,7 @@ void main(string[] args)
     auto jsonText = cast(string)stdin.byChunk(4096).joiner.array;
     auto config = fromJSON!Config(jsonText.parseJSON());
 
-    writefln(`{\n
-    "version": { "gitRef": "%s" }\n
+    writefln(`{
+    "version": { "gitRef": "%s" }
     }`, config.version_.gitRef);
 }
